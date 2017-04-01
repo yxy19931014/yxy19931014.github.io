@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="js高级第六天闭包
+内层函数
+外层函数的作用域（内层函数所处的作用域）
+
+
+作用：
+延长变量的生命周期
+缓存中间状态值（每个闭包都有自己独立的内存环境）执行上下文
+
+
+种特定的场景
+包括
+
+
+变量对象:存储执行上下文中的变量和函数
+作用域链
+this（和面向对象中的不一样）执行上下文
+存放执行上下文的区域函数的几个属性
+arguments表示实参的集合
+callee 用于递归, arguments">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/29/js高级3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="js高级第六天闭包
+内层函数
+外层函数的作用域（内层函数所处的作用域）
+
+
+作用：
+延长变量的生命周期
+缓存中间状态值（每个闭包都有自己独立的内存环境）执行上下文
+
+
+种特定的场景
+包括
+
+
+变量对象:存储执行上下文中的变量和函数
+作用域链
+this（和面向对象中的不一样）执行上下文
+存放执行上下文的区域函数的几个属性
+arguments表示实参的集合
+callee 用于递归, arguments">
+<meta property="og:updated_time" content="2017-03-04T12:48:16.829Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="js高级第六天闭包
+内层函数
+外层函数的作用域（内层函数所处的作用域）
+
+
+作用：
+延长变量的生命周期
+缓存中间状态值（每个闭包都有自己独立的内存环境）执行上下文
+
+
+种特定的场景
+包括
+
+
+变量对象:存储执行上下文中的变量和函数
+作用域链
+this（和面向对象中的不一样）执行上下文
+存放执行上下文的区域函数的几个属性
+arguments表示实参的集合
+callee 用于递归, arguments">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js高级3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/29/js高级3/" class="article-date">
+  <time datetime="2017-03-29T06:23:01.811Z" itemprop="datePublished">2017-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js高级第六天"><a href="#js高级第六天" class="headerlink" title="js高级第六天"></a>js高级第六天</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ol>
+<li>内层函数</li>
+<li>外层函数的作用域（内层函数所处的作用域）</li>
+</ol>
+<ul>
+<li>作用：<ol>
+<li>延长变量的生命周期</li>
+<li>缓存中间状态值（每个闭包都有自己独立的内存环境）<h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2></li>
+</ol>
+</li>
+<li>种特定的场景</li>
+<li>包括</li>
+</ul>
+<ol>
+<li>变量对象:存储执行上下文中的变量和函数</li>
+<li>作用域链</li>
+<li>this（和面向对象中的不一样）<h2 id="执行上下文-1"><a href="#执行上下文-1" class="headerlink" title="执行上下文"></a>执行上下文</h2></li>
+<li>存放执行上下文的区域<h2 id="函数的几个属性"><a href="#函数的几个属性" class="headerlink" title="函数的几个属性"></a>函数的几个属性</h2></li>
+<li>arguments表示实参的集合</li>
+<li><p>callee 用于递归, arguments.callee表示函数自身</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.dir(<span class="built_in">arguments</span>);</div><div class="line">  <span class="keyword">var</span> arr=[].slice.call(<span class="built_in">arguments</span>,<span class="number">0</span>);<span class="comment">//将类数组转换为数组</span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>length表示形参的个数</p>
+</li>
+<li>caller 调用此函数的函数</li>
+<li>name 函数的名称<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2></li>
+<li>浏览器本身是单线程还是多线程  （多线程）<ol>
+<li>页面标签的渲染</li>
+<li>网络通信</li>
+<li>解析js的运行（js的运行是单线程的）</li>
+</ol>
+</li>
+<li>事件队列： 队列中放任务（函数）<ol>
+<li>定时函数（setInterval、setTimeout）（触发条件：时间到了）</li>
+<li>事件处理函数 （触发条件：对应的的事件类型触发）</li>
+<li>ajax的回调函数（触发条件：接收到服务器完整的数据（readyState值发生变化））</li>
+</ol>
+<ul>
+<li>事件队列中任务执行的条件：<ul>
+<li>主线程空闲</li>
+<li>满足任务的触发条件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>setTimeout 中时间的设置，如果是0代表浏览器默认的最小延迟时间，放到事件队列中。<h2 id="绑定事件方式"><a href="#绑定事件方式" class="headerlink" title="绑定事件方式"></a>绑定事件方式</h2></li>
+<li><p>行内绑定</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onclick</span>=<span class="string">"fn()"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">123</span>);&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>给DOM元素直接绑定  btn.onclick=function(){}</p>
+</li>
+<li>addEventListener(“click”,function(){},false)/attachEvent(“onclick”,function(){})<h2 id="阻止事件冒泡和默认行为"><a href="#阻止事件冒泡和默认行为" class="headerlink" title="阻止事件冒泡和默认行为"></a>阻止事件冒泡和默认行为</h2></li>
+</ol>
+<ul>
+<li>在原生js中，return false;只能阻止浏览器默认行为（on绑定的事件），不能阻止事件冒泡。</li>
+<li>在jQuery中，return false；都可以阻止。</li>
+</ul>
+<ol>
+<li>阻止冒泡<ol>
+<li>e=e || window.event; e.stopPropagation();(e.cancelBubble=true;)</li>
+</ol>
+</li>
+<li>阻止默认行为<ol>
+<li>e=event || window.event; e.preventDefault();(e.returnValue=false;)</li>
+<li>return false;只能阻止on绑定方式，不能阻止addEventListener绑定的事件<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2></li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>jQuery中事件委托的原理也是这样<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> ul=<span class="built_in">document</span>.getElementsByTagName(<span class="string">"ul"</span>)[<span class="number">0</span>];</div><div class="line">    ul.onclick=<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">       e=event || <span class="built_in">window</span>.event;</div><div class="line">        <span class="keyword">var</span> target=e.target|| e.srcElement;</div><div class="line">        <span class="built_in">console</span>.log(target.innerHTML);</div><div class="line">    &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><ol>
+<li>在jQuery中用trigger</li>
+<li>在原生js中模拟：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span><span class="attr">id</span>=<span class="string">"btn"</span><span class="attr">value</span>=<span class="string">"等待"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span><span class="attr">id</span>=<span class="string">"btn1"</span><span class="attr">value</span>=<span class="string">"触发"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">obj,type,fn</span>) </span>&#123;</div><div class="line">        obj.listener=obj.listener || &#123;&#125;;</div><div class="line">        obj.listener[type]=obj.listener[type] || [];</div><div class="line">        obj.listener[type].push(fn);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fireEvent</span>(<span class="params">obj,type</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> arr=obj.listener[type];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</div><div class="line">            arr[i]();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> btn=<span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</div><div class="line">    <span class="keyword">var</span> btn1=<span class="built_in">document</span>.getElementById(<span class="string">"btn1"</span>);</div><div class="line">    addEvent(btn,<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="number">123</span>);</div><div class="line">    &#125;);</div><div class="line">    addEvent(btn,<span class="string">"abc"</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="number">456</span>);</div><div class="line">    &#125;);</div><div class="line">    addEvent(btn,<span class="string">"haha"</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="number">789</span>);</div><div class="line">    &#125;);</div><div class="line">    btn1.onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        fireEvent(btn,<span class="string">"haha"</span>);</div><div class="line">    &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="jquery-插件"><a href="#jquery-插件" class="headerlink" title="jquery 插件"></a>jquery 插件</h2><ol>
+<li><p>定义</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">$.extend(&#123;</div><div class="line">  属性:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//或者</span></div><div class="line">$.fn.extend(&#123;</div><div class="line">  属性:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">$(<span class="string">"div"</span>).属性();</div><div class="line"><span class="comment">//或者</span></div><div class="line">$.属性();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h2><ol>
+<li>jsonp 接口服务器响应内容是什么？函数调用<ol>
+<li>jquery中ajax方法中jsonp=cb  // 修改callback的名称（后台决定的）</li>
+<li>jquery中ajax方法中jsonpCallback=任意一个值（自己定义）</li>
+<li>因为jQuery中已经封装好了callback方法，所以可以自己不写</li>
+</ol>
+</li>
+<li>json <ol>
+<li>json 是一种规范</li>
+<li>json 是字符串</li>
+<li>json是一种数据格式<ol>
+<li>键值对</li>
+<li>键必须用双引号</li>
+<li>值必须是基本类型string,boolean,number 引用类型可以使数组和对象</li>
+</ol>
+</li>
+<li>json字符串可以转换成json对象</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/29/js高级3/" data-id="cj0z7fkeh000kqkuyxn8tu58t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/29/js高级4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/29/js高级2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/29/移动web1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/面向对象高级/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/js面向对象高级2/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/js基础/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/js函数/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

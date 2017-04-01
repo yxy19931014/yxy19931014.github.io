@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="移动web开发移动端页面的要求1. 不能出现横向滚动条
+2. 缩放的比例和pc端一致
+3. 不允许用户自行缩放
+流式布局
+width=100%。，内容自适应viewPort 视口
+只存在于移动端，盛放网页的，可以缩放
+viewport 的设置
+viewport的属性：
+width  设置视口的宽度，单位px，有一个特殊值device-width
+height 视口的高度，单位px
+initial-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/29/移动web1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="移动web开发移动端页面的要求1. 不能出现横向滚动条
+2. 缩放的比例和pc端一致
+3. 不允许用户自行缩放
+流式布局
+width=100%。，内容自适应viewPort 视口
+只存在于移动端，盛放网页的，可以缩放
+viewport 的设置
+viewport的属性：
+width  设置视口的宽度，单位px，有一个特殊值device-width
+height 视口的高度，单位px
+initial-">
+<meta property="og:updated_time" content="2017-02-10T13:02:03.123Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="移动web开发移动端页面的要求1. 不能出现横向滚动条
+2. 缩放的比例和pc端一致
+3. 不允许用户自行缩放
+流式布局
+width=100%。，内容自适应viewPort 视口
+只存在于移动端，盛放网页的，可以缩放
+viewport 的设置
+viewport的属性：
+width  设置视口的宽度，单位px，有一个特殊值device-width
+height 视口的高度，单位px
+initial-">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动web1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/29/移动web1/" class="article-date">
+  <time datetime="2017-03-29T06:23:01.822Z" itemprop="datePublished">2017-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="移动web开发"><a href="#移动web开发" class="headerlink" title="移动web开发"></a>移动web开发</h1><h2 id="移动端页面的要求"><a href="#移动端页面的要求" class="headerlink" title="移动端页面的要求"></a>移动端页面的要求</h2><pre><code>1. 不能出现横向滚动条
+2. 缩放的比例和pc端一致
+3. 不允许用户自行缩放
+</code></pre><h2 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h2><ul>
+<li>width=100%。，内容自适应<h2 id="viewPort-视口"><a href="#viewPort-视口" class="headerlink" title="viewPort 视口"></a>viewPort 视口</h2></li>
+<li>只存在于移动端，盛放网页的，可以缩放</li>
+<li>viewport 的设置<ul>
+<li><strong>viewport的属性</strong>：<ol>
+<li>width  设置视口的宽度，单位px，有一个特殊值device-width<ol>
+<li>height 视口的高度，单位px</li>
+<li>initial-scale 默认的初始缩放比例，标准的比例： 1:1（initial-scale=1.0 达到适配）</li>
+<li>user-scalable  是否允许用户自行缩放（yes和no,1和0），默认为1</li>
+<li>maximum-scale 最大缩放比例</li>
+<li>miximum-scale 最小缩放比例</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>标准国际移动web开发viewport的设置</strong><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="移动端的事件"><a href="#移动端的事件" class="headerlink" title="移动端的事件"></a>移动端的事件</h2><ol>
+<li>touchstart</li>
+<li>touchmove</li>
+<li>touchend</li>
+</ol>
+<ul>
+<li>touch事件的几个属性<br>1.changedTouches 所有的改变的触摸点集合<br>2.targetTouches  目标元素上的所有触摸点集合<pre><code>3.touches        页面上所有的触摸点
+</code></pre></li>
+</ul>
+<ol>
+<li>click事件有300ms的延迟<ul>
+<li>解决办法：<ol>
+<li>tap</li>
+<li>插件  FastClick  使用click 点击效率提高</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>tap 轻触事件<ul>
+<li>tap轻触事件的两个条件<ol>
+<li>tap 轻触响应比click快</li>
+<li>没有滑动过<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="xml"></span></div><div class="line">      window.itcast=&#123;&#125;</div><div class="line">      // 轻触事件方法</div><div class="line"></div><div class="line">      /**</div><div class="line">       * params</div><div class="line">       * 谁绑定这个事件</div><div class="line">       * tap事件的响应执行函数</div><div class="line">       */</div><div class="line">      itcast.tap=function (dom,callback) &#123;</div><div class="line">          /*</div><div class="line">           * tap轻触事件的两个条件</div><div class="line">           * 1. tap 轻触响应比click快  150ms内响应都认为是tap事件</div><div class="line">           * 2. 没有滑动过</div><div class="line">           * */</div><div class="line">          if(!dom || typeof dom =="object")return false;</div><div class="line"></div><div class="line">          var isMove=false;//默认没有滑动过</div><div class="line">          var startTime=0;</div><div class="line"></div><div class="line">          dom.addEventListener("touchstart",function (e) &#123;</div><div class="line">              startTime=Date.now();//相当于new Date().getTime();</div><div class="line"></div><div class="line">          &#125;);</div><div class="line">          dom.addEventListener("touchmove",function (e) &#123;</div><div class="line">              isMove=true;</div><div class="line">          &#125;);</div><div class="line">          dom.addEventListener("touchend",function (e) &#123;</div><div class="line">              // 计算响应时间</div><div class="line">              var time=Date.now()-startTime;</div><div class="line">              // 确定是不是tap事件</div><div class="line">              if(!isMove &amp;&amp; time<span class="tag">&lt;<span class="name">150)</span> &#123;</span></div><div class="line">                  <span class="attr">callback</span> &amp;&amp; <span class="attr">callback</span>(<span class="attr">e</span>);</div><div class="line">              &#125;</div><div class="line">              // 重置记录的参数</div><div class="line">              <span class="attr">isMove</span>=<span class="string">false;</span></div><div class="line">              <span class="attr">startTime</span>=<span class="string">0;</span></div><div class="line">          &#125;);</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/29/移动web1/" data-id="cj0z7fkec000jqkuy93a6zm6o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/29/面向对象高级/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/29/移动web1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/面向对象高级/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/js面向对象高级2/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/js基础/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/29/js函数/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
