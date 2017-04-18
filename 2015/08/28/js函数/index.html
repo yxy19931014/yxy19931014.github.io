@@ -1,0 +1,756 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="函数函数的定义1234function fn()&amp;#123;    alert(&quot;我是函数fn&quot;);&amp;#125;fn();//函数调用
+函数的参数
+js中函数的形参可以和实参的个数不同
+形参的个数大于实参的个数
+形参的个数小于实参的个数
+
+
+实参数组arguments内置对象
+arguments只在函数内部存在，出了函数就没有意义了
+arguments.callee是当前函数本身，在递归函数中可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="午休时间分享一些js函数">
+<meta property="og:url" content="http://yoursite.com/2015/08/28/js函数/index.html">
+<meta property="og:site_name" content="Miss yang">
+<meta property="og:description" content="函数函数的定义1234function fn()&amp;#123;    alert(&quot;我是函数fn&quot;);&amp;#125;fn();//函数调用
+函数的参数
+js中函数的形参可以和实参的个数不同
+形参的个数大于实参的个数
+形参的个数小于实参的个数
+
+
+实参数组arguments内置对象
+arguments只在函数内部存在，出了函数就没有意义了
+arguments.callee是当前函数本身，在递归函数中可以">
+<meta property="og:updated_time" content="2017-04-12T02:34:16.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="午休时间分享一些js函数">
+<meta name="twitter:description" content="函数函数的定义1234function fn()&amp;#123;    alert(&quot;我是函数fn&quot;);&amp;#125;fn();//函数调用
+函数的参数
+js中函数的形参可以和实参的个数不同
+形参的个数大于实参的个数
+形参的个数小于实参的个数
+
+
+实参数组arguments内置对象
+arguments只在函数内部存在，出了函数就没有意义了
+arguments.callee是当前函数本身，在递归函数中可以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/28/js函数/"/>
+
+
+
+
+
+  <title> 午休时间分享一些js函数 | Miss yang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/28/js函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                午休时间分享一些js函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-28T12:57:04+08:00">
+                2015-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">    alert("我是函数fn");</div><div class="line">&#125;</div><div class="line">fn();//函数调用</div></pre></td></tr></table></figure>
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><ul>
+<li>js中函数的形参可以和实参的个数不同<ol>
+<li>形参的个数大于实参的个数</li>
+<li>形参的个数小于实参的个数</li>
+</ol>
+</li>
+<li>实参数组arguments内置对象<ul>
+<li>arguments只在函数内部存在，出了函数就没有意义了</li>
+<li>arguments.callee是当前函数本身，在递归函数中可以使用</li>
+</ul>
+</li>
+<li>js中没有方法重载，如果函数的方法名相同，后面的函数会把前面的函数覆盖<h2 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h2></li>
+<li>函数内部的变量无法直接调用，如果用到函数内部的变量，必须返回才能得到</li>
+<li>函数没有return语句，默认返回值为undefined</li>
+<li>函数有return语句，但是return;依然返回undefinded，用于切断代码<h2 id="函数的案例"><a href="#函数的案例" class="headerlink" title="函数的案例"></a>函数的案例</h2></li>
+<li><p><strong>求阶乘</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="comment">//    求阶乘</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getJc</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> pro=<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=n;i&gt;=<span class="number">1</span>;i--)&#123;</div><div class="line">            pro*=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> pro;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(getJc(<span class="number">4</span>));</div><div class="line"><span class="comment">//=======================================</span></div><div class="line"><span class="comment">//    求阶乘的和</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getSumJc</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> sum=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">            sum+=getJc(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(getSumJc(<span class="number">3</span>));</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>判断一个数是否是质数</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="comment">//num是需要判断的数，返回true 或 false</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(num&lt;<span class="number">2</span> || num!=<span class="built_in">parseInt</span>(num))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"您输入的为非法字符"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">2</span>;i&lt;num;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(num%i==<span class="number">0</span>)&#123;</div><div class="line">                <span class="comment">//切断函数</span></div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//    console.log(isPrime(7));</span></div><div class="line"><span class="comment">//    console.log(isPrime(1));</span></div><div class="line"><span class="comment">//========================================</span></div><div class="line"><span class="comment">//    优化代码</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isPrime1</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(num&lt;<span class="number">2</span> || num!=<span class="built_in">parseInt</span>(num))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"您输入的为非法字符"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> bool=<span class="literal">true</span>;<span class="comment">//开闭原则</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">Math</span>.sqrt(num);i++)&#123;<span class="comment">//只需要比较到num/2</span></div><div class="line">            <span class="keyword">if</span>(num%i==<span class="number">0</span>)&#123;</div><div class="line">                <span class="comment">//切断函数</span></div><div class="line">                bool=<span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> bool;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(isPrime1(<span class="number">13</span>));</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="隐式全局变量和变量提升"><a href="#隐式全局变量和变量提升" class="headerlink" title="隐式全局变量和变量提升"></a>隐式全局变量和变量提升</h2><ul>
+<li>函数中没有var 定义的变量是全局变量</li>
+<li>变量提升，只会提升变量名， 不会提升变量值</li>
+<li>函数声明提升，则会把函数整个都提升<br>##函数的小案例</li>
+</ul>
+<ol>
+<li><p>斐波那契数列</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getFei</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(n&lt;<span class="number">1</span> || n!=<span class="built_in">parseInt</span>(n))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"您输入的为非法字符"</span>;<span class="comment">//防止输入的内容为负数，非数字</span></div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">var</span> n1=<span class="number">1</span>,n2=<span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">3</span>;i&lt;=n;i++)&#123;<span class="comment">//从第三项开始计算</span></div><div class="line"></div><div class="line">                <span class="keyword">var</span> temp=n2;</div><div class="line">                n2=n1+n2;</div><div class="line">                n1=temp;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> n2;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(getFei(<span class="number">12</span>));<span class="comment">//144</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>判断是一年中的第几天</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isRn</span>(<span class="params">year</span>) </span>&#123;<span class="comment">//判断是否为闰年</span></div><div class="line">            <span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span> || year%<span class="number">400</span>==<span class="number">0</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getDayOfYear</span>(<span class="params">year,month,day</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> days=day;</div><div class="line">            <span class="keyword">var</span> monthDay=[<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;month<span class="number">-1</span>;i++)&#123;</div><div class="line">                days+=monthDay[i];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(month&gt;<span class="number">2</span> &amp;&amp; isRn(year))&#123;</div><div class="line">                days+=<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> days;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(getDayOfYear(<span class="number">2016</span>,<span class="number">3</span>,<span class="number">1</span>));</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="几种特殊的函数"><a href="#几种特殊的函数" class="headerlink" title="几种特殊的函数"></a>几种特殊的函数</h2><ul>
+<li>匿名函数</li>
+<li>回调函数</li>
+<li>递归函数</li>
+<li>闭包函数<h2 id="对象（用空间换时间）"><a href="#对象（用空间换时间）" class="headerlink" title="对象（用空间换时间）"></a>对象（用空间换时间）</h2></li>
+<li>对象的定义<ul>
+<li>var obj=new Object();</li>
+<li>绑定属性(方法)<br>obj.name=”杨”;<br>obj[sex]=”女”;<br>obj.age=18;<br>obj.sayHi=function(){<br>  console.log(“你好”);<br>}<h2 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h2></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>自定义构造函数</li>
+<li>属性绑定</li>
+<li>this的作用<ul>
+<li>this 只出现在函数中</li>
+<li>this 指函数的调用者</li>
+<li>this 指被创建出来的对象</li>
+<li>在DOM中，this始终指向触发事件的对象</li>
+</ul>
+</li>
+<li>new关键字的作用<ol>
+<li>创建一个空对象</li>
+<li>将this指向空对象</li>
+<li>执行构造函数中的代码，给属性和方法赋值</li>
+<li>将this指向的对象返回<h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2></li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>json的属性一般是字符串</li>
+<li>json就是对象，对象不一定是json</li>
+<li>json的格式： {key:value,key2:value……}</li>
+<li>对象的遍历方法：for…in</li>
+<li>代码如下：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> aaa=&#123;<span class="string">"name"</span>:<span class="string">"zhan"</span>,<span class="string">"age"</span>:<span class="number">18</span>&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> aaa)&#123;<span class="comment">//k代表json中的所有属性，json[k]代表json中的所有属性值</span></div><div class="line">        <span class="built_in">console</span>.log(k);<span class="comment">//所有属性</span></div><div class="line">        <span class="built_in">console</span>.log(aaa[k]);<span class="comment">//所有属性值</span></div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/26/js高级3/" rel="next" title="js面向对象分享3">
+                <i class="fa fa-chevron-left"></i> js面向对象分享3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/30/DOM/" rel="prev" title="Dom操作的分享">
+                Dom操作的分享 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yxy" />
+          <p class="site-author-name" itemprop="name">Yxy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的定义"><span class="nav-number">1.1.</span> <span class="nav-text">函数的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的参数"><span class="nav-number">1.2.</span> <span class="nav-text">函数的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的返回值"><span class="nav-number">1.3.</span> <span class="nav-text">函数的返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的案例"><span class="nav-number">1.4.</span> <span class="nav-text">函数的案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式全局变量和变量提升"><span class="nav-number">1.5.</span> <span class="nav-text">隐式全局变量和变量提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种特殊的函数"><span class="nav-number">1.6.</span> <span class="nav-text">几种特殊的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象（用空间换时间）"><span class="nav-number">1.7.</span> <span class="nav-text">对象（用空间换时间）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义对象"><span class="nav-number">1.8.</span> <span class="nav-text">自定义对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json"><span class="nav-number">1.9.</span> <span class="nav-text">json</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yxy</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

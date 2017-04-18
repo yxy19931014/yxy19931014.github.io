@@ -1,0 +1,724 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="js高级第二天boolean的判断* 单个空对象转成布尔值true   {},[]
+* 空数组[]与布尔值的比较会转换成数值的比较
+* 非空数组[1,2]与布尔值的比较会转换成字符串再进行比较
+* 空对象与布尔值的比较不会转换成数值，只是转换为字符串，空对象{}转换成布尔值也是true
+* 对象之间比较的是内存地址的比较
+* ****
+123456&amp;lt;script&amp;gt;	console.lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js面向对象小分享3">
+<meta property="og:url" content="http://yoursite.com/2015/08/26/js高级2/index.html">
+<meta property="og:site_name" content="Miss yang">
+<meta property="og:description" content="js高级第二天boolean的判断* 单个空对象转成布尔值true   {},[]
+* 空数组[]与布尔值的比较会转换成数值的比较
+* 非空数组[1,2]与布尔值的比较会转换成字符串再进行比较
+* 空对象与布尔值的比较不会转换成数值，只是转换为字符串，空对象{}转换成布尔值也是true
+* 对象之间比较的是内存地址的比较
+* ****
+123456&amp;lt;script&amp;gt;	console.lo">
+<meta property="og:updated_time" content="2017-04-12T02:31:58.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js面向对象小分享3">
+<meta name="twitter:description" content="js高级第二天boolean的判断* 单个空对象转成布尔值true   {},[]
+* 空数组[]与布尔值的比较会转换成数值的比较
+* 非空数组[1,2]与布尔值的比较会转换成字符串再进行比较
+* 空对象与布尔值的比较不会转换成数值，只是转换为字符串，空对象{}转换成布尔值也是true
+* 对象之间比较的是内存地址的比较
+* ****
+123456&amp;lt;script&amp;gt;	console.lo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/26/js高级2/"/>
+
+
+
+
+
+  <title> js面向对象小分享3 | Miss yang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/26/js高级2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js面向对象小分享3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-26T10:23:04+08:00">
+                2015-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="js高级第二天"><a href="#js高级第二天" class="headerlink" title="js高级第二天"></a>js高级第二天</h1><h2 id="boolean的判断"><a href="#boolean的判断" class="headerlink" title="boolean的判断"></a>boolean的判断</h2><pre><code>* 单个空对象转成布尔值true   {},[]
+* 空数组[]与布尔值的比较会转换成数值的比较
+* 非空数组[1,2]与布尔值的比较会转换成字符串再进行比较
+* 空对象与布尔值的比较不会转换成数值，只是转换为字符串，空对象{}转换成布尔值也是true
+* 对象之间比较的是内存地址的比较
+* ****
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="built_in">console</span>.log([]==<span class="literal">false</span>);<span class="comment">//true</span></div><div class="line">	<span class="built_in">console</span>.log(![]);<span class="comment">//false</span></div><div class="line">	<span class="built_in">console</span>.log([].toString());<span class="comment">//""空字符串</span></div><div class="line">	<span class="built_in">console</span>.log([]==![]);<span class="comment">//true;![]是false，然后再比较</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="in的问题"><a href="#in的问题" class="headerlink" title="in的问题"></a>in的问题</h2><pre><code>* 声明变量的时候是否添加var变量：
+    * 不使用var不会预解析，但是也会向window中添加属性
+    * window中本身就有一个属性undefined，并且undefined的值也是undefined。
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><pre><code>* 抽象的模板---创建实例对象
+* 实例对象
+* 原型：减少内存消耗，实现资源共享
+* 这三者的关系：
+    1. 构造函数中都有原型属性prototype,该属性本质也是对象（object的实例对象）
+    2. 原型对象中都有一个属性constructor,该属性指向原型所属的构造函数
+    3. 实例对象中都有一个属性_proto_,该属性不是标准属性，不可以在编程中使用，浏览器内部使用的，该属性指向原型对象
+    4. 实例对象._proto_==构造函数.prototype，结果为true
+</code></pre><h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><pre><code>* 实例对象和原型对象之间形成的链式结构，该链式结构通过_proto_链接起来的  c1-&gt;Car.Prototype-&gt;Object.prototype-&gt;null
+* 原型链的修改：通过重置源性对象的方式来修改
+</code></pre><h2 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h2><pre><code>* 本质上是代码的复用
+* 缺点：没有办法给继承过来的属性赋值而不影响所有的实例。继承过来的引用类型的数据，所有的实例是共享的。
+* 解决上面的问题可以通过借用构造函数的方式。
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=name;</div><div class="line">  <span class="keyword">this</span>.age=age;</div><div class="line">&#125;</div><div class="line">Person.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">score</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.score=score;</div><div class="line">&#125;</div><div class="line">Student.prototype=<span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>,<span class="number">23</span>);</div><div class="line">Student.prototype.showScore(</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.score);</div><div class="line">)</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="call和apply（作用基本一样）"><a href="#call和apply（作用基本一样）" class="headerlink" title="call和apply（作用基本一样）"></a>call和apply（作用基本一样）</h2><pre><code>* 可以调用函数
+* 改变所调用的函数内部的this指向
+    * 在非严格模式下，全局函数中this的指向是window
+    * 在严格模式下，全局函数中this指向的是undefined
+    * call和apply的第一参数是要改变的对象
+    * 在改变的同时也可以给函数传参 
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">c</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a+<span class="keyword">this</span>.b+c);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj=&#123;</div><div class="line">  a=<span class="number">3</span>,</div><div class="line">  b=<span class="number">5</span></div><div class="line">&#125;</div><div class="line">foo.call(<span class="literal">null</span>,<span class="number">2</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="借用继承"><a href="#借用继承" class="headerlink" title="借用继承"></a>借用继承</h2><pre><code>* 产生的新问题：没有办法继承父级构造函数的原型中的成员，因为没有创建对象
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name,voice</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=name;</div><div class="line">  <span class="keyword">this</span>.voice=voice;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name,voice,action</span>)</span>&#123;</div><div class="line">  Animal.call(<span class="keyword">this</span>,name,voice);</div><div class="line">  <span class="keyword">this</span>.action=action;</div><div class="line">&#125;</div><div class="line">&lt;script&gt;</div></pre></td></tr></table></figure>
+<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><pre><code>* 借用继承，子构造函数.proto
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name=name;</div><div class="line">  <span class="keyword">this</span>.age=age;</div><div class="line">&#125;</div><div class="line">Person.prototype.action=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Teacher</span>(<span class="params">name,age,level</span>)</span>&#123;</div><div class="line">  Person.call(<span class="keyword">this</span>,name,age);</div><div class="line">  <span class="keyword">this</span>.level=level;</div><div class="line">&#125;</div><div class="line">Teacher.prototype=<span class="keyword">new</span> Person();</div><div class="line">Teacher.prototyoe.teach=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> tea=<span class="keyword">new</span> Teacher(<span class="string">"zhangsan"</span>,<span class="number">23</span>,<span class="string">"T5"</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="ES5新特性Object-create"><a href="#ES5新特性Object-create" class="headerlink" title="ES5新特性Object.create()"></a>ES5新特性Object.create()</h2><pre><code>* 参数是给原型的
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> o = &#123;</div><div class="line">        <span class="attr">name</span> : <span class="string">'tom'</span>,</div><div class="line">        <span class="attr">color</span> : <span class="string">'blue'</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> o1 = <span class="built_in">Object</span>.create(o);</div><div class="line">    <span class="built_in">console</span>.dir(o1);</div><div class="line">    <span class="built_in">console</span>.log(o1.name);</div><div class="line">    <span class="built_in">console</span>.log(o1.color);</div><div class="line">    </div><div class="line">    <span class="comment">//兼容ie代码</span></div><div class="line">    <span class="keyword">var</span> create = <span class="function"><span class="keyword">function</span>(<span class="params">param</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">Object</span>.create)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.create(param);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">            Foo.prototype = param;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Foo();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="属性的复制"><a href="#属性的复制" class="headerlink" title="属性的复制"></a>属性的复制</h2><pre><code>* 原生js的属性复制
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> obj1=&#123;&#125;;</div><div class="line"><span class="keyword">var</span> obj2=&#123;</div><div class="line">  <span class="attr">name</span>:<span class="string">"zhang"</span>,</div><div class="line">  <span class="attr">age</span>:<span class="number">23</span>,</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">des,origin</span>)</span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> des)&#123;</div><div class="line">    des[key]=origin[key];</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<pre><code>* jQuery中的属性复制
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">set</span>)</span>&#123;<span class="comment">//可以加多个参数，都在defaultSetting的基础上添加</span></div><div class="line">      <span class="keyword">var</span> dafaultSetting=&#123;</div><div class="line">        <span class="attr">width</span>:<span class="string">"100"</span>,</div><div class="line">        <span class="attr">height</span>:<span class="string">"200"</span>,</div><div class="line">        <span class="attr">background</span>:<span class="string">"red"</span>,</div><div class="line">        <span class="attr">sets</span>:&#123;</div><div class="line">          <span class="attr">flag</span>:<span class="number">12</span>,</div><div class="line">          <span class="attr">msg</span>:<span class="string">"message"</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      extends(<span class="literal">true</span>,defaultSetting,set);<span class="comment">//深度拷贝</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> setting=&#123;</div><div class="line">      <span class="attr">opacity</span>:<span class="number">.5</span>,</div><div class="line">      <span class="attr">width</span>:<span class="string">"300"</span></div><div class="line">	&#125;</div><div class="line">	<span class="comment">//调用函数</span></div><div class="line">	foo(setting);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="面向对象案例"><a href="#面向对象案例" class="headerlink" title="面向对象案例"></a>面向对象案例</h2><ul>
+<li><p>做一个tab栏，点击按钮切换，自动轮播</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">        #container div &#123;</div><div class="line">            width: 400px;</div><div class="line">            height: 200px;</div><div class="line">            background: lightgreen;</div><div class="line">            display: none;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--案例:选项卡--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span><span class="attr">value</span>=<span class="string">"苹果"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span><span class="attr">value</span>=<span class="string">"香蕉"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span><span class="attr">value</span>=<span class="string">"橘子"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>apple<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>banana<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>orange<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"tab.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="comment">//    var tab=new Tab("container");</span></div><div class="line"><span class="comment">//    tab.init();</span></div><div class="line"><span class="comment">//    tab.auto();</span></div><div class="line">    <span class="keyword">var</span> newTab=<span class="keyword">new</span> MyTab();</div><div class="line">        newTab.init();</div><div class="line">        newTab.autoplay();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>js代码</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Tab</span>(<span class="params">containerId</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.container = <span class="built_in">document</span>.getElementById(containerId);</div><div class="line">    <span class="keyword">this</span>.aInput = <span class="keyword">this</span>.container.getElementsByTagName(<span class="string">'input'</span>);</div><div class="line">    <span class="keyword">this</span>.aDiv = <span class="keyword">this</span>.container.getElementsByTagName(<span class="string">'div'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Tab.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 设置默认显示</span></div><div class="line">    <span class="keyword">this</span>.aInput[<span class="number">0</span>].style.backgroundColor = <span class="string">'orange'</span>;</div><div class="line">    <span class="keyword">this</span>.aDiv[<span class="number">0</span>].style.display = <span class="string">'block'</span>;</div><div class="line">    <span class="comment">// 缓存实例对象</span></div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">    <span class="comment">// 绑定单击事件</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.aInput.length; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.aInput[i].index = i;</div><div class="line">        <span class="keyword">this</span>.aInput[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="comment">// 实现样式切换功能</span></div><div class="line">            <span class="comment">// 这里的this是点击的按钮</span></div><div class="line">            that.change(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Tab.prototype.change = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.aInput.length; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.aInput[i].style.backgroundColor = <span class="string">''</span>;</div><div class="line">        <span class="keyword">this</span>.aDiv[i].style.display = <span class="string">'none'</span>;</div><div class="line">    &#125;</div><div class="line">    obj.style.backgroundColor = <span class="string">'orange'</span>;</div><div class="line">    <span class="keyword">this</span>.aDiv[obj.index].style.display = <span class="string">'block'</span>;</div><div class="line">&#125;</div><div class="line">Tab.prototype.auto=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> that=<span class="keyword">this</span>;</div><div class="line">    setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(i&gt;<span class="number">2</span>)&#123;</div><div class="line">            i=<span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> nowBtn=that.aInput[i];</div><div class="line">        that.change(nowBtn);</div><div class="line">        i++;</div><div class="line">    &#125;,<span class="number">1000</span>);</div><div class="line">&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>js代码（继承）</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Tab</span>(<span class="params">containerId</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.container = <span class="built_in">document</span>.getElementById(containerId);</div><div class="line">    <span class="keyword">this</span>.aInput = <span class="keyword">this</span>.container.getElementsByTagName(<span class="string">'input'</span>);</div><div class="line">    <span class="keyword">this</span>.aDiv = <span class="keyword">this</span>.container.getElementsByTagName(<span class="string">'div'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Tab.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 设置默认显示</span></div><div class="line">    <span class="keyword">this</span>.aInput[<span class="number">0</span>].style.backgroundColor = <span class="string">'orange'</span>;</div><div class="line">    <span class="keyword">this</span>.aDiv[<span class="number">0</span>].style.display = <span class="string">'block'</span>;</div><div class="line">    <span class="comment">// 缓存实例对象</span></div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">    <span class="comment">// 绑定单击事件</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.aInput.length; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.aInput[i].index = i;</div><div class="line">        <span class="keyword">this</span>.aInput[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="comment">// 实现样式切换功能</span></div><div class="line">            <span class="comment">// 这里的this是点击的按钮</span></div><div class="line">            that.change(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Tab.prototype.change = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.aInput.length; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.aInput[i].style.backgroundColor = <span class="string">''</span>;</div><div class="line">        <span class="keyword">this</span>.aDiv[i].style.display = <span class="string">'none'</span>;</div><div class="line">    &#125;</div><div class="line">    obj.style.backgroundColor = <span class="string">'orange'</span>;</div><div class="line">    <span class="keyword">this</span>.aDiv[obj.index].style.display = <span class="string">'block'</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyTab</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.nowIndex=<span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line">MyTab.prototype=<span class="keyword">new</span> Tab(<span class="string">"container"</span>);</div><div class="line">MyTab.prototype.autoplay=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> that=<span class="keyword">this</span>;</div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(that.nowIndex==<span class="number">2</span>)&#123;</div><div class="line">      that.nowIndex=<span class="number">0</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">      nowIndex++;</div><div class="line">    &#125;</div><div class="line">    that.change(that.aInput[that.nowIndex]);</div><div class="line">  &#125;,<span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/25/js高级/" rel="next" title="js面向对象的小分享1">
+                <i class="fa fa-chevron-left"></i> js面向对象的小分享1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/26/js高级4/" rel="prev" title="js面向对象小分享4">
+                js面向对象小分享4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yxy" />
+          <p class="site-author-name" itemprop="name">Yxy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#js高级第二天"><span class="nav-number">1.</span> <span class="nav-text">js高级第二天</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#boolean的判断"><span class="nav-number">1.1.</span> <span class="nav-text">boolean的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in的问题"><span class="nav-number">1.2.</span> <span class="nav-text">in的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">1.3.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链"><span class="nav-number">1.4.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型继承"><span class="nav-number">1.5.</span> <span class="nav-text">原型继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call和apply（作用基本一样）"><span class="nav-number">1.6.</span> <span class="nav-text">call和apply（作用基本一样）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#借用继承"><span class="nav-number">1.7.</span> <span class="nav-text">借用继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合继承"><span class="nav-number">1.8.</span> <span class="nav-text">组合继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5新特性Object-create"><span class="nav-number">1.9.</span> <span class="nav-text">ES5新特性Object.create()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性的复制"><span class="nav-number">1.10.</span> <span class="nav-text">属性的复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象案例"><span class="nav-number">1.11.</span> <span class="nav-text">面向对象案例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yxy</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

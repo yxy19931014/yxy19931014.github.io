@@ -1,0 +1,908 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="nodenode相关概念(node 入门)
+node是一个构建于chrome v8引擎之上的一个JavaScript运行时环境
+node可以像浏览器一样去解析和执行JavaScript代码
+JavaScript是一个动态脚本语言
+
+
+预编译
+再执行
+
+
+JavaScript之前的解析和执行一直停留在浏览器环境
+
+
+通过编译解析引擎:解析和执行JavaScript脚本代码
+chrome v8 引擎是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最近在使用node，总结一下">
+<meta property="og:url" content="http://yoursite.com/2016/02/05/node/index.html">
+<meta property="og:site_name" content="Miss yang">
+<meta property="og:description" content="nodenode相关概念(node 入门)
+node是一个构建于chrome v8引擎之上的一个JavaScript运行时环境
+node可以像浏览器一样去解析和执行JavaScript代码
+JavaScript是一个动态脚本语言
+
+
+预编译
+再执行
+
+
+JavaScript之前的解析和执行一直停留在浏览器环境
+
+
+通过编译解析引擎:解析和执行JavaScript脚本代码
+chrome v8 引擎是">
+<meta property="og:updated_time" content="2017-04-12T02:50:36.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最近在使用node，总结一下">
+<meta name="twitter:description" content="nodenode相关概念(node 入门)
+node是一个构建于chrome v8引擎之上的一个JavaScript运行时环境
+node可以像浏览器一样去解析和执行JavaScript代码
+JavaScript是一个动态脚本语言
+
+
+预编译
+再执行
+
+
+JavaScript之前的解析和执行一直停留在浏览器环境
+
+
+通过编译解析引擎:解析和执行JavaScript脚本代码
+chrome v8 引擎是">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/02/05/node/"/>
+
+
+
+
+
+  <title> 最近在使用node，总结一下 | Miss yang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/05/node/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                最近在使用node，总结一下
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-05T17:50:30+08:00">
+                2016-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><h2 id="node相关概念-node-入门"><a href="#node相关概念-node-入门" class="headerlink" title="node相关概念(node 入门)"></a>node相关概念(node 入门)</h2><ol>
+<li>node是一个构建于chrome v8引擎之上的一个JavaScript运行时环境</li>
+<li>node可以像浏览器一样去解析和执行JavaScript代码</li>
+<li>JavaScript是一个动态脚本语言</li>
+</ol>
+<ul>
+<li>预编译</li>
+<li>再执行</li>
+</ul>
+<ol>
+<li>JavaScript之前的解析和执行一直停留在浏览器环境</li>
+</ol>
+<ul>
+<li>通过编译解析引擎:解析和执行JavaScript脚本代码</li>
+<li>chrome v8 引擎是所有浏览器里面解析和执行js代码最快的</li>
+<li>node作者把chrome 的v8引擎移植出来,又基于v8 引擎之上构建了一系列的API,在node中没有界面,不再需要关心HTML,css,只需关注JavaScript, 和dom ,style 等没有任何关系</li>
+<li>node的操作:文件操作,网络操作,让JavaScript具有了服务器编程能力</li>
+</ul>
+<ol>
+<li>node的运行机制</li>
+</ol>
+<ul>
+<li>事件驱动</li>
+<li>非阻塞IO模型: 大量的异步编程接口( 充满了类似于客户端ajax一样的 api, 异步和回调紧紧相连)</li>
+<li>跨平台</li>
+<li>单线程’</li>
+<li>轻量和高效</li>
+</ul>
+<ol>
+<li>npm </li>
+</ol>
+<ul>
+<li>npm是世界上最大的开源库生态系统</li>
+<li>在npm上发布的第三方包已经接近35 万个之多</li>
+<li>包只能解决某一个单一的问题,但解决不了业务<h2 id="node-应用"><a href="#node-应用" class="headerlink" title="node 应用"></a>node 应用</h2></li>
+</ul>
+<ol>
+<li>网站开发</li>
+<li>数据库交互</li>
+<li>移动应用</li>
+<li>网络游戏</li>
+<li>cli (Command line Interface)程序:</li>
+<li>node具有开发命令行工具的的能力</li>
+</ol>
+<ul>
+<li>webpack 打包构建工具</li>
+<li>http-server 在终端快速提供一个服务</li>
+<li>browser-sync 提供服务,提供浏览器自动刷新的能力<h2 id="node-局限"><a href="#node-局限" class="headerlink" title="node 局限"></a>node 局限</h2></li>
+</ul>
+<ul>
+<li>对io 操作比较频繁的操作,</li>
+</ul>
+<ul>
+<li>文件读写</li>
+<li>和数据库交互,网络数据io</li>
+</ul>
+<ul>
+<li>实时通信</li>
+</ul>
+<ul>
+<li>聊天,微信,qq,直播<h2 id="node相关资料"><a href="#node相关资料" class="headerlink" title="node相关资料"></a>node相关资料</h2><ol>
+<li>node入门</li>
+<li>官方api文档 <a href="https://node.js.org/dist/last-v6.x/docs/api/" target="_blank" rel="external">https://node.js.org/dist/last-v6.x/docs/api/</a> </li>
+<li>cnode社区</li>
+<li>JavaScript 标准参考教程</li>
+<li>commonJS规范<h2 id="node-安装"><a href="#node-安装" class="headerlink" title="node 安装"></a>node 安装</h2></li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>使用nvm (Node version manager)安装和管理</li>
+<li>使用nodemon实现改完代码服务自动重启<ul>
+<li>nodemon是一个基于node开发的一个命令行工具,可以实现监视代码改动,自动重启服务的功能<ol>
+<li>安装</li>
+<li>nodemon +文件名<h2 id="helloworld"><a href="#helloworld" class="headerlink" title="helloworld"></a>helloworld</h2><h2 id="path-环境变量"><a href="#path-环境变量" class="headerlink" title="path 环境变量"></a>path 环境变量</h2></li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>问题: 为什么在终端的任何目录下输入’node’命令,执行的都是’node.exe’这个可执行文件</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>当在终端输入一个字符串的时候,终端会在当前目录下找和该字符串相关的执行文件,如果找不到优先进入用户path 环境变量</li>
+<li>path 环境变量通过<strong>英文分号</strong>作为分割保存多个目录</li>
+<li>终端会一个一个的进入该目录查找该字符串对应的文件</li>
+<li>如果找到就会执行</li>
+<li>找不到就会报错<ol>
+<li>把可执行文件的所属目录的绝对路径放到path中<h2 id="node中的JavaScript"><a href="#node中的JavaScript" class="headerlink" title="node中的JavaScript"></a>node中的JavaScript</h2><h3 id="EcmaScript"><a href="#EcmaScript" class="headerlink" title="EcmaScript"></a>EcmaScript</h3></li>
+</ol>
+</li>
+<li>var , if , function, {}, object,Number,String,Date,Math..  console, 定时器函数,global 全局<h3 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h3></li>
+<li>核心模块是由node 环境平台本身提供的,以一个唯一的核心模块标识名进行暴露,使用方法的时候直接通过require 函数进行加载</li>
+<li>node 把绝大多数的api都封装到一个具名的核心模块中,例如文件操作的’fs’,网络操作的’http’</li>
+<li>也就是想使用核心模块,必须加载才可以使用<h3 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h3></li>
+<li>由社区提供(公司和个人)</li>
+<li>例如: moment :时间处理类库</li>
+<li>如何在node中引入第三方包,<ol>
+<li>下载</li>
+<li>通过require函数引包</li>
+<li>查看moment api文档<br>###用户自定义模块</li>
+</ol>
+</li>
+<li>在node中,也提供了一种所谓JavaScript模块化解决方案,(类似于之前学过的requirejs)</li>
+<li>require是一个函数,可以在node中的任何脚本文件中使用,用来加载模块(加载解析执行)<ol>
+<li>解析执行被加载文件中的代码</li>
+<li>在node中,一个文件就是一个模块</li>
+<li>模块天生就是一个私有的作用域</li>
+<li>每个模块提供了一个接口对象:module,通过module.exports导出内部变量; 别的模块通过require加载会得到指定模块,得到该模块内部的变量<h2 id="文件操作-—核心模块fs"><a href="#文件操作-—核心模块fs" class="headerlink" title="文件操作 —核心模块fs"></a>文件操作 —核心模块fs</h2><h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3></li>
+</ol>
+</li>
+<li>readFile</li>
+<li>通过一个回调函数来获取异步的操作结果</li>
+<li>如果操作成功,err是null,失败就是错误对象</li>
+<li>所以在异步操作中优先判断一下err的值</li>
+<li>异步操作中无法通过try-catch来捕获异常<br>###同步</li>
+<li>readFileSync</li>
+<li>和普通代码一样,像接收变量返回值一样接收结果</li>
+<li>可以用try-catch捕获异常<h3 id="关于文件操作中同步和异步"><a href="#关于文件操作中同步和异步" class="headerlink" title="关于文件操作中同步和异步"></a>关于文件操作中同步和异步</h3></li>
+<li>优先使用异步<h2 id="封装异步的API"><a href="#封装异步的API" class="headerlink" title="封装异步的API"></a>封装异步的API</h2><h3 id="最重要的两步"><a href="#最重要的两步" class="headerlink" title="最重要的两步"></a>最重要的两步</h3></li>
+</ul>
+<ol>
+<li>通过callback去结果</li>
+<li>如果有错误，则通过回调向外抛，由调用者决定如何处理<h2 id="网络操作http"><a href="#网络操作http" class="headerlink" title="网络操作http"></a>网络操作http</h2></li>
+<li>创建服务</li>
+<li>为server绑定request请求事件,添加事件处理函数</li>
+<li>绑定端口号,启动服务,可以绑定多个端口,也可以启动多个<h2 id="两个编码和解码的API"><a href="#两个编码和解码的API" class="headerlink" title="两个编码和解码的API"></a>两个编码和解码的API</h2></li>
+<li>encodeURI(‘有中文的URL’);// 可以将有中文的URL转换为编码格式的URL</li>
+<li>decodeURI(‘编码的URL转换为中文格式的URL’);<h2 id="web-路径"><a href="#web-路径" class="headerlink" title="web 路径"></a>web 路径</h2></li>
+</ol>
+<ul>
+<li>在web开发中,看到的路径不一定是真实的文件路径</li>
+<li>看到的文件名也不一定是真实的文件名</li>
+<li>URL本质上只是一个标识而已</li>
+<li>绝大多数情况下,需要开发人员自定义标识<ol>
+<li>为了好看,路由更简洁</li>
+<li>为了更加灵活的控制</li>
+</ol>
+</li>
+<li>网站中的静态资源以/开头,避免了URL受当前文件路径的影响<h3 id="node-中的相对路径"><a href="#node-中的相对路径" class="headerlink" title="node 中的相对路径"></a>node 中的相对路径</h3></li>
+<li>node中,<strong>文件操作</strong>中的<strong>相对路径</strong>永远都是相对于执行node命令所处的终端路径</li>
+<li>解决方法: 把相对路径转换为绝对动态路径<br>###在每个模块中都提供给了两个属性(动态绝对路径)</li>
+<li>__dirname   可以动态的获取当前文件模块的绝对路径,利用这个属性可以动态的拼接一个动态的绝对路径</li>
+<li>__ filename</li>
+<li>虽然文件的位置可能变化,但是这两个属性也会随之变化</li>
+<li>所以就可以得到文件的动态绝对路径<h3 id="node中的path-模块"><a href="#node中的path-模块" class="headerlink" title="node中的path 模块"></a>node中的path 模块</h3></li>
+<li>path.join()方法可以拼接路径(其中../可以自动回到上一级目录)<h3 id="操作文件的相对路径的应用场景"><a href="#操作文件的相对路径的应用场景" class="headerlink" title="操作文件的相对路径的应用场景"></a>操作文件的相对路径的应用场景</h3></li>
+<li>一般操作文件的相对路径只有在开发一些<strong>全局</strong>命令行工具的时候会用到.<h2 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h2><h3 id="没有文件上传的post表单提交"><a href="#没有文件上传的post表单提交" class="headerlink" title="没有文件上传的post表单提交"></a>没有文件上传的post表单提交</h3></li>
+</ul>
+<ol>
+<li>监听req事件和end事件</li>
+<li>如果表单数据比较大,则 data 事件可能会触发多次，每次触发执行都可以通过回调函数拿到一个数据块, 然后在外部定一个变量，每接收到一个数据块，则将该数据块与外部变量拼接起来,最后在 end 事件中就可以使用收集完的完整数据块了<h2 id="node中的模块化"><a href="#node中的模块化" class="headerlink" title="node中的模块化"></a>node中的模块化</h2></li>
+</ol>
+<ul>
+<li>规范:Common JS</li>
+<li>node中的模块化采用了CommonJS 规范,CommonJs不仅是模块规范,他为JavaScript提供了</li>
+<li>module.exports和exports的原本指向是相同的,但是任意改变其中一个的指向,则两者就不再相同; 模块中导出的部分是module.exports,而不是exports.<br>###模块加载的规则</li>
+</ul>
+<ol>
+<li>一个模块被加载过后,就会缓存起来,下次使用的时候直接从缓存中拿,所以不会加载两次</li>
+<li>加载的是模块中的module.exports 的值,而不是引用</li>
+<li>加载模块是require函数接收的参数叫模块标识符</li>
+<li>如果是加载<strong>核心模块</strong>,先看缓存,如果有,直接拿,没有就直接加载</li>
+<li><strong>自己写的模块</strong>,以’./‘ ,’../‘ ,’/‘  开头(/ 是当前文件模块所属磁盘根目录</li>
+<li><strong>第三方模块</strong>包</li>
+<li>先基于当前文件模块所属目录找node_modules目录</li>
+<li>如果找到,则去该目录中着对应的目录</li>
+<li>如果找到,则找该目录中的package.json 文件</li>
+<li>如果找到package.json文件,则找该文件中的main属性</li>
+<li>如果找到main属性,则拿到该属性对应的文件路径</li>
+<li>如果找到moment 目录后,发现没有package.json,或者有package.json没有main属性,或者有main属性但是指向是的路径不存在;则node会默认去看moment 目录下有没有index.js,node-index.json文件;  如果找不到index或者找不到moment或者 找不到 node_modules,则进上一级目录找node_modules(查找规则同上) ,如果上一级还找不到,继续向上,一直到当前文件所属磁盘根目录. 如果最后到磁盘根目录还找不到,最后报错<h3 id="umd-规范-兼容了多种JavaScript模块规范"><a href="#umd-规范-兼容了多种JavaScript模块规范" class="headerlink" title="umd 规范  兼容了多种JavaScript模块规范"></a>umd 规范  兼容了多种JavaScript模块规范</h3></li>
+</ol>
+<ul>
+<li>这种模块一般和具体的环境无关<h2 id="表单文件上传"><a href="#表单文件上传" class="headerlink" title="表单文件上传"></a>表单文件上传</h2><h3 id="第三方"><a href="#第三方" class="headerlink" title="第三方"></a>第三方</h3></li>
+</ul>
+<ol>
+<li>第三方包: formidable </li>
+<li>核心模块 path <h3 id="自己处理"><a href="#自己处理" class="headerlink" title="自己处理"></a>自己处理</h3></li>
+<li>XMLRequestHttp2 提供了formData 可以上传二进制数据,也就是可以上传文件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form=<span class="built_in">document</span>.createElementById(<span class="string">'form'</span>);</div><div class="line"><span class="keyword">var</span> formData=<span class="keyword">new</span> FormData($(form)[<span class="number">0</span>]);</div><div class="line"><span class="comment">//然后ajax中data 传formData</span></div><div class="line">ajax中需要加两个属性: </div><div class="line">processData: <span class="literal">false</span>;</div><div class="line">contentType: <span class="literal">false</span>; <span class="comment">//目的是可以传文件</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="url-核心模块"><a href="#url-核心模块" class="headerlink" title="url 核心模块"></a>url 核心模块</h2><ol>
+<li>引入</li>
+<li>var parseObj=url.parse(req,url,true);  得到请求信息对象</li>
+<li>parseObj中有pathname,是请求路径</li>
+<li>parseObj 中的query 中是请求参数对象<h2 id="MVC-模式-mvvm"><a href="#MVC-模式-mvvm" class="headerlink" title="MVC 模式,mvvm"></a>MVC 模式,mvvm</h2></li>
+</ol>
+<ul>
+<li>MVC是一种软件开发模块化架构方式,一种非常好的代码架构组织方式,(适用于web开发),被很多领域应用了,就是用来解耦视图和数据,利用c控制器去调度视图和模型数据的交互</li>
+<li>优点:<ul>
+<li>提高了代码的可维护性</li>
+<li>视图数据和业务数据是完全分开的</li>
+<li>例如表单提交上来的数据就是视图数据</li>
+<li>业务数据就是真实的数据库中的数据</li>
+<li>增加了代码的可重用性<h3 id="mvvm-的核心就是数据驱动视图"><a href="#mvvm-的核心就是数据驱动视图" class="headerlink" title="mvvm 的核心就是数据驱动视图"></a>mvvm 的核心就是数据驱动视图</h3></li>
+</ul>
+</li>
+<li>各部分各司其职</li>
+<li>model不会直接操作数据</li>
+<li>view也不会直接操作数据</li>
+<li>之间通过控制器驱动<h2 id="图片上传预览"><a href="#图片上传预览" class="headerlink" title="图片上传预览"></a>图片上传预览</h2></li>
+<li>当用户选择了图片，监听file控件的change事件</li>
+<li>在 change事件中将用户选择的文件异步提交到服务器</li>
+<li>服务器将图片保存，响应回来该图片的请求地址</li>
+<li>将预览图的src设置为服务器的响应资源的路径<h2 id="渲染方法"><a href="#渲染方法" class="headerlink" title="渲染方法"></a>渲染方法</h2></li>
+<li>如果要处理SEO，一定要服务端渲染</li>
+<li>如果不考虑，则优先客户端渲染，</li>
+<li>客户端渲染的好处：减轻服务端压力，提高用户体验</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/03/AngularJs/" rel="next" title="angular 使用流程">
+                <i class="fa fa-chevron-left"></i> angular 使用流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/06/css3.1/" rel="prev" title="css3分享">
+                css3分享 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yxy" />
+          <p class="site-author-name" itemprop="name">Yxy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#node"><span class="nav-number">1.</span> <span class="nav-text">node</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#node相关概念-node-入门"><span class="nav-number">1.1.</span> <span class="nav-text">node相关概念(node 入门)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-应用"><span class="nav-number">1.2.</span> <span class="nav-text">node 应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-局限"><span class="nav-number">1.3.</span> <span class="nav-text">node 局限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node相关资料"><span class="nav-number">1.4.</span> <span class="nav-text">node相关资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-安装"><span class="nav-number">1.5.</span> <span class="nav-text">node 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#helloworld"><span class="nav-number">1.6.</span> <span class="nav-text">helloworld</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-环境变量"><span class="nav-number">1.7.</span> <span class="nav-text">path 环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node中的JavaScript"><span class="nav-number">1.8.</span> <span class="nav-text">node中的JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EcmaScript"><span class="nav-number">1.8.1.</span> <span class="nav-text">EcmaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心模块"><span class="nav-number">1.8.2.</span> <span class="nav-text">核心模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方模块"><span class="nav-number">1.8.3.</span> <span class="nav-text">第三方模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作-—核心模块fs"><span class="nav-number">1.9.</span> <span class="nav-text">文件操作 —核心模块fs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步"><span class="nav-number">1.9.1.</span> <span class="nav-text">异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于文件操作中同步和异步"><span class="nav-number">1.9.2.</span> <span class="nav-text">关于文件操作中同步和异步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装异步的API"><span class="nav-number">1.10.</span> <span class="nav-text">封装异步的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最重要的两步"><span class="nav-number">1.10.1.</span> <span class="nav-text">最重要的两步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络操作http"><span class="nav-number">1.11.</span> <span class="nav-text">网络操作http</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个编码和解码的API"><span class="nav-number">1.12.</span> <span class="nav-text">两个编码和解码的API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-路径"><span class="nav-number">1.13.</span> <span class="nav-text">web 路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#node-中的相对路径"><span class="nav-number">1.13.1.</span> <span class="nav-text">node 中的相对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node中的path-模块"><span class="nav-number">1.13.2.</span> <span class="nav-text">node中的path 模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作文件的相对路径的应用场景"><span class="nav-number">1.13.3.</span> <span class="nav-text">操作文件的相对路径的应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post请求"><span class="nav-number">1.14.</span> <span class="nav-text">post请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#没有文件上传的post表单提交"><span class="nav-number">1.14.1.</span> <span class="nav-text">没有文件上传的post表单提交</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node中的模块化"><span class="nav-number">1.15.</span> <span class="nav-text">node中的模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#umd-规范-兼容了多种JavaScript模块规范"><span class="nav-number">1.15.1.</span> <span class="nav-text">umd 规范  兼容了多种JavaScript模块规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单文件上传"><span class="nav-number">1.16.</span> <span class="nav-text">表单文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方"><span class="nav-number">1.16.1.</span> <span class="nav-text">第三方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己处理"><span class="nav-number">1.16.2.</span> <span class="nav-text">自己处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#url-核心模块"><span class="nav-number">1.17.</span> <span class="nav-text">url 核心模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC-模式-mvvm"><span class="nav-number">1.18.</span> <span class="nav-text">MVC 模式,mvvm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mvvm-的核心就是数据驱动视图"><span class="nav-number">1.18.1.</span> <span class="nav-text">mvvm 的核心就是数据驱动视图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片上传预览"><span class="nav-number">1.19.</span> <span class="nav-text">图片上传预览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染方法"><span class="nav-number">1.20.</span> <span class="nav-text">渲染方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yxy</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

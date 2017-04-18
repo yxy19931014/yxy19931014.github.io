@@ -1,0 +1,821 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="js基础js组成
+ECMASript
+DOM
+BOMjs 变量命名规则
+由字母、数字、“_”、$组成
+不能用字母开头
+长度不能超过255个字符
+不能用关键字和保留字
+不推荐使用汉语
+严格区分大小写数值类型
+
+
+简单数据类型（栈）传值
+数字类型
+浮点数：存在精度丢失问题，尽量避免浮点数的运算
+NAN和任何值都不等
+isNAN()方法用于判断是不是数字
+
+
+字符串类型
+字符串的不可变性
+转义字符＼ｂ－">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js基础，千万记牢">
+<meta property="og:url" content="http://yoursite.com/2015/08/24/js基础/index.html">
+<meta property="og:site_name" content="Miss yang">
+<meta property="og:description" content="js基础js组成
+ECMASript
+DOM
+BOMjs 变量命名规则
+由字母、数字、“_”、$组成
+不能用字母开头
+长度不能超过255个字符
+不能用关键字和保留字
+不推荐使用汉语
+严格区分大小写数值类型
+
+
+简单数据类型（栈）传值
+数字类型
+浮点数：存在精度丢失问题，尽量避免浮点数的运算
+NAN和任何值都不等
+isNAN()方法用于判断是不是数字
+
+
+字符串类型
+字符串的不可变性
+转义字符＼ｂ－">
+<meta property="og:updated_time" content="2017-04-12T02:29:43.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js基础，千万记牢">
+<meta name="twitter:description" content="js基础js组成
+ECMASript
+DOM
+BOMjs 变量命名规则
+由字母、数字、“_”、$组成
+不能用字母开头
+长度不能超过255个字符
+不能用关键字和保留字
+不推荐使用汉语
+严格区分大小写数值类型
+
+
+简单数据类型（栈）传值
+数字类型
+浮点数：存在精度丢失问题，尽量避免浮点数的运算
+NAN和任何值都不等
+isNAN()方法用于判断是不是数字
+
+
+字符串类型
+字符串的不可变性
+转义字符＼ｂ－">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/24/js基础/"/>
+
+
+
+
+
+  <title> js基础，千万记牢 | Miss yang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/24/js基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js基础，千万记牢
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-24T12:26:53+08:00">
+                2015-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="js基础"><a href="#js基础" class="headerlink" title="js基础"></a>js基础</h1><h2 id="js组成"><a href="#js组成" class="headerlink" title="js组成"></a>js组成</h2><ol>
+<li>ECMASript</li>
+<li>DOM</li>
+<li>BOM<h2 id="js-变量命名规则"><a href="#js-变量命名规则" class="headerlink" title="js 变量命名规则"></a>js 变量命名规则</h2></li>
+<li>由字母、数字、“_”、$组成</li>
+<li>不能用字母开头</li>
+<li>长度不能超过255个字符</li>
+<li>不能用关键字和保留字</li>
+<li>不推荐使用汉语</li>
+<li>严格区分大小写<h2 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h2></li>
+</ol>
+<ul>
+<li>简单数据类型（栈）传值<ol>
+<li>数字类型<ul>
+<li>浮点数：存在精度丢失问题，尽量避免浮点数的运算</li>
+<li>NAN和任何值都不等</li>
+<li>isNAN()方法用于判断是不是数字</li>
+</ul>
+</li>
+<li>字符串类型<ul>
+<li>字符串的不可变性</li>
+<li>转义字符＼ｂ－－－空格</li>
+<li>字符串的拼接</li>
+<li>输出带有单引号的字符串</li>
+</ul>
+</li>
+<li>布尔类型</li>
+<li>undefined<ul>
+<li>undefined和任何值运算都为NAN</li>
+<li>undefined==null的结果为true</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>判断数据类型—typeOf(n) 或者 typeOf n</li>
+</ul>
+</li>
+<li>复杂数据类型（堆）传地址<ul>
+<li>null <ul>
+<li>null和数字运算时相当于0</li>
+<li>undefined==null的结果为true<h2 id="数值类型转换"><a href="#数值类型转换" class="headerlink" title="数值类型转换"></a>数值类型转换</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>转换成字符串类型(String)<ul>
+<li>变量+“ ”或者 变量+任意字符串</li>
+<li>String()</li>
+<li>变量.toString()</li>
+</ul>
+</li>
+<li>转换成数字类型（Number）<ul>
+<li>减0，乘1，除1</li>
+<li>Number() 只要带字母就转换为NAN</li>
+<li>parseInt() 带字母都自动把字母忽略</li>
+<li>parseFloat() 带字母都自动把字母忽略</li>
+</ul>
+</li>
+<li>转换为布尔类型<ul>
+<li>除0，“ ”，undefined,null,NAN都转换为true</li>
+<li>将变量转换为布尔类型 —- !!变量<h2 id="打印正方形，直角三角形-九九乘法表"><a href="#打印正方形，直角三角形-九九乘法表" class="headerlink" title="打印正方形，直角三角形,九九乘法表"></a>打印正方形，直角三角形,九九乘法表</h2></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>打印正方形<br>  代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="comment">//    打印正方形</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;<span class="number">10</span>;j++)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"☆"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>打印直角三角形</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;=i;j++)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"☆"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">10</span>;j&gt;i;j--)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"☆"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">1</span>;j&lt;=i;j++)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"&amp;nbsp;"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">10</span>;n&gt;i;n--)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"☆"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">9</span>;j&gt;i;j--)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"&amp;nbsp;"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>;n&lt;=i;n++)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"☆"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line"><span class="comment">//    菱形</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">3</span>;j&gt;i;j--)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"&amp;nbsp;"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">0</span>;n&lt;<span class="number">2</span>*i+<span class="number">1</span>;n++)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"☆"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">    &#125;</div><div class="line">       <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</div><div class="line">           <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;=i;j++)&#123;</div><div class="line">               <span class="built_in">document</span>.write(<span class="string">"&amp;nbsp;"</span>);</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">for</span>(<span class="keyword">var</span> n=<span class="number">5</span>;n&gt;=<span class="number">2</span>*i+<span class="number">1</span>;n--)&#123;</div><div class="line">               <span class="built_in">document</span>.write(<span class="string">"☆"</span>);</div><div class="line">           &#125;</div><div class="line">           <span class="built_in">document</span>.write(<span class="string">"&lt;br&gt;"</span>);</div><div class="line">       &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>打印九九乘法表</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.write(<span class="string">"&lt;table&gt;"</span>)</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;tr&gt;"</span>)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">1</span>;j&lt;=i;j++)&#123;</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"&lt;td&gt;"</span>)</div><div class="line">            <span class="built_in">document</span>.write(i+<span class="string">"x"</span>+j+<span class="string">"="</span>+i*j);</div><div class="line">            <span class="built_in">document</span>.write(<span class="string">"&lt;/td&gt;"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">document</span>.write(<span class="string">"&lt;/tr&gt;"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">document</span>.write(<span class="string">"&lt;/table&gt;"</span>)</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="comment">//求1-100之间所有不能被7整除的数的和</span></div><div class="line">   <span class="keyword">var</span> sum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(i%<span class="number">7</span>==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        sum+=i;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(sum);</div><div class="line"></div><div class="line"><span class="comment">//    求1-100之间不能被3整除的数的和大于2000的数字</span></div><div class="line">    <span class="keyword">var</span> sum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        sum+=i;</div><div class="line">        <span class="keyword">if</span>(sum&gt;<span class="number">2000</span>)&#123;</div><div class="line">            <span class="built_in">console</span>.log(sum);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//    求1-100之间不能被3整除的数的和第一个大于2000的数字</span></div><div class="line">    <span class="keyword">var</span> sum=<span class="number">0</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        sum+=i;</div><div class="line">       <span class="keyword">if</span>(sum&gt;<span class="number">2000</span>)&#123;</div><div class="line">            <span class="built_in">console</span>.log(sum);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//求200-300之间所有奇数和</span></div><div class="line">    <span class="keyword">var</span> oddSum=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">200</span>;i&lt;=<span class="number">300</span>;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        oddSum+=i;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(oddSum);</div><div class="line"></div><div class="line"><span class="comment">//求200-300之间第一个能被7整除的数字</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">200</span>;i&lt;=<span class="number">300</span>;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(i%<span class="number">7</span>!=<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(i);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol>
+<li>数组的定义<ul>
+<li>var arr=new Array(1,2,3,4);</li>
+<li>var arr=[1,2,3,4];</li>
+</ul>
+</li>
+<li>数组的操作<ul>
+<li>操作数组的长度<ul>
+<li>arr.length</li>
+</ul>
+</li>
+<li>操作数组中的值<ul>
+<li>arr[3]</li>
+</ul>
+</li>
+<li>为数组赋值<br>  arr[8]=”22”;</li>
+</ul>
+</li>
+<li>数组的遍历<ul>
+<li>for (var i=0;i&lt;arr.length;i++){<br>  arr[i]=arr[i]+”111”;<br>}</li>
+</ul>
+</li>
+<li>数组的练习<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> arr=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">12</span>,<span class="number">23</span>,<span class="number">45</span>,<span class="number">56</span>,<span class="number">34</span>,<span class="number">7</span>,<span class="number">0</span>);</div><div class="line"><span class="comment">//    求一组数中的所有数的和 和平均值</span></div><div class="line">    <span class="keyword">var</span> sum=<span class="number">0</span>,avg;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</div><div class="line">        sum+=arr[i];</div><div class="line">    &#125;</div><div class="line">    avg=sum/arr.length;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"和是："</span>+sum+<span class="string">"平均值是"</span>+avg);</div><div class="line"></div><div class="line"><span class="comment">//    求一组数中的最大值和最小值，以及所在位置</span></div><div class="line">    <span class="keyword">var</span> max=arr[<span class="number">0</span>],min=arr[<span class="number">0</span>];</div><div class="line">    <span class="keyword">var</span> maxIndex=<span class="number">0</span>,minIndex=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(max&lt;arr[i])&#123;</div><div class="line">            max=arr[i];</div><div class="line">            maxIndex=i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(min&gt;arr[i])&#123;</div><div class="line">            min=arr[i];</div><div class="line">            minIndex=i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"最大值是："</span>+max+<span class="string">"最大值的索引是"</span>+maxIndex+<span class="string">"最小值是"</span>+min+<span class="string">"最小值的索引是"</span>+minIndex);</div><div class="line"></div><div class="line"><span class="comment">//    将数组转换成字符串用|或其他符号分割（3种）</span></div><div class="line">        <span class="keyword">var</span> str=<span class="built_in">String</span>(arr[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</div><div class="line">        str+=<span class="string">"|"</span>+arr[i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"str为："</span>+str);</div><div class="line"></div><div class="line"><span class="comment">//    将数组中值为0的去掉，不为0的存入新数组</span></div><div class="line">    <span class="keyword">var</span> newArr=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(arr[i]==<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        newArr[newArr.length]=arr[i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"去掉0后的新数组为："</span>+newArr);</div><div class="line"></div><div class="line"><span class="comment">//    翻转数组（反向，新数组）</span></div><div class="line"><span class="comment">//    1.正向遍历，反向添加</span></div><div class="line">    <span class="keyword">var</span> arr1=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</div><div class="line">        arr1[arr1.length<span class="number">-1</span>]=arr[arr.length<span class="number">-1</span>-i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"翻转数组为："</span>+arr1);</div><div class="line"><span class="comment">//    2,反向遍历，正向添加</span></div><div class="line">    <span class="keyword">var</span> arr1=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=arr.length<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">        arr1[arr1.length]=arr[i];</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"翻转数组为："</span>+arr1);</div><div class="line"><span class="comment">//    3数组的前后调换位置</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length/<span class="number">2</span>;i++)&#123;</div><div class="line">            <span class="keyword">var</span> temp=arr[i];</div><div class="line">            arr[i]=arr[arr.length<span class="number">-1</span>-i];</div><div class="line">            arr[arr.length<span class="number">-1</span>-i]=temp;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"翻转数组为："</span>+arr);<span class="comment">//arr.reverse();h</span></div><div class="line"></div><div class="line"><span class="comment">//    冒泡排序，从小到大</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length<span class="number">-1</span>;i++)&#123;</div><div class="line">        <span class="keyword">var</span> isSort=<span class="literal">true</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">1</span>;j&lt;arr.length-i;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(arr[j]&lt;arr[j<span class="number">-1</span>])&#123;</div><div class="line"></div><div class="line">                isSort=<span class="literal">false</span>;</div><div class="line">                <span class="keyword">var</span> temp=arr[j];</div><div class="line">                arr[j]=arr[j<span class="number">-1</span>];</div><div class="line">                arr[j<span class="number">-1</span>]=temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(isSort)&#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"冒泡排序后的数组为："</span>+arr);</div><div class="line">    </div><div class="line"><span class="comment">//    去掉数组中重复的值</span></div><div class="line">    <span class="keyword">var</span> arr=[<span class="number">12</span>,<span class="number">34</span>,<span class="number">56</span>,<span class="number">78</span>,<span class="number">34</span>,<span class="number">10</span>,<span class="number">24</span>,<span class="number">56</span>,<span class="number">12</span>,<span class="number">6</span>];</div><div class="line">    <span class="keyword">var</span> newArr=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</div><div class="line">        <span class="keyword">var</span> isEqual=<span class="literal">true</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=i+<span class="number">1</span>;j&lt;arr.length<span class="number">-1</span>;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(arr[i]==arr[j])&#123;</div><div class="line">                isEqual=<span class="literal">false</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(isEqual)&#123;</div><div class="line">            newArr[newArr.length]=arr[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(newArr);</div><div class="line"></div><div class="line"><span class="comment">//    2创建一个新数组，对之前的数组进行判断，如果没有和新数组中相同的值，就添加</span></div><div class="line">    <span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">1</span>];</div><div class="line">    <span class="keyword">var</span> newArr=[];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</div><div class="line">        <span class="keyword">var</span> isEqual=<span class="literal">false</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;newArr.length;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(arr[i]==newArr[j])&#123;</div><div class="line">                isEqual=<span class="literal">true</span>;<span class="comment">//判断是否有相同的</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(!isEqual)&#123;</div><div class="line">            newArr[newArr.length]=arr[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(newArr);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/02/git流程/" rel="next" title="js基础">
+                <i class="fa fa-chevron-left"></i> js基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/24/Js高级1/" rel="prev" title="js面向对象小分享1">
+                js面向对象小分享1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yxy" />
+          <p class="site-author-name" itemprop="name">Yxy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#js基础"><span class="nav-number">1.</span> <span class="nav-text">js基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js组成"><span class="nav-number">1.1.</span> <span class="nav-text">js组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js-变量命名规则"><span class="nav-number">1.2.</span> <span class="nav-text">js 变量命名规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值类型"><span class="nav-number">1.3.</span> <span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值类型转换"><span class="nav-number">1.4.</span> <span class="nav-text">数值类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印正方形，直角三角形-九九乘法表"><span class="nav-number">1.5.</span> <span class="nav-text">打印正方形，直角三角形,九九乘法表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break和continue"><span class="nav-number">1.6.</span> <span class="nav-text">break和continue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.7.</span> <span class="nav-text">数组</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yxy</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

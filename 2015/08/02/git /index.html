@@ -1,0 +1,811 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="git操作计算机的几种方式
+图形界面
+命令行
+windows —&amp;gt; dos
+Linux （Unix  mac）—-&amp;gt;shell
+dos和shell 都有两层含义：解析器，编程脚本bath 命令
+
+
+
+
+命令格式： 命令[可选参数][参数]
+
+
+pwd  打开当前路径
+ll 显示文件详细信息  （ls -l）
+ls 查看当然目录下的文件只显示文件名
+cd 切换目录
+mkdir 创建目录(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了好久的git，小小总结一下">
+<meta property="og:url" content="http://yoursite.com/2015/08/02/git /index.html">
+<meta property="og:site_name" content="Miss yang">
+<meta property="og:description" content="git操作计算机的几种方式
+图形界面
+命令行
+windows —&amp;gt; dos
+Linux （Unix  mac）—-&amp;gt;shell
+dos和shell 都有两层含义：解析器，编程脚本bath 命令
+
+
+
+
+命令格式： 命令[可选参数][参数]
+
+
+pwd  打开当前路径
+ll 显示文件详细信息  （ls -l）
+ls 查看当然目录下的文件只显示文件名
+cd 切换目录
+mkdir 创建目录(">
+<meta property="og:updated_time" content="2017-04-12T02:35:41.338Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用了好久的git，小小总结一下">
+<meta name="twitter:description" content="git操作计算机的几种方式
+图形界面
+命令行
+windows —&amp;gt; dos
+Linux （Unix  mac）—-&amp;gt;shell
+dos和shell 都有两层含义：解析器，编程脚本bath 命令
+
+
+
+
+命令格式： 命令[可选参数][参数]
+
+
+pwd  打开当前路径
+ll 显示文件详细信息  （ls -l）
+ls 查看当然目录下的文件只显示文件名
+cd 切换目录
+mkdir 创建目录(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/02/git /"/>
+
+
+
+
+
+  <title> 用了好久的git，小小总结一下 | Miss yang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/02/git /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用了好久的git，小小总结一下
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-02T12:33:04+08:00">
+                2015-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="操作计算机的几种方式"><a href="#操作计算机的几种方式" class="headerlink" title="操作计算机的几种方式"></a>操作计算机的几种方式</h2><ol>
+<li>图形界面</li>
+<li>命令行<ol>
+<li>windows —&gt; dos</li>
+<li>Linux （Unix  mac）—-&gt;shell</li>
+<li>dos和shell 都有两层含义：解析器，编程脚本<h2 id="bath-命令"><a href="#bath-命令" class="headerlink" title="bath 命令"></a>bath 命令</h2></li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>命令格式： 命令[可选参数][参数]</li>
+</ul>
+<ol>
+<li>pwd  打开当前路径</li>
+<li>ll 显示文件详细信息  （ls -l）</li>
+<li>ls 查看当然目录下的文件只显示文件名</li>
+<li>cd 切换目录</li>
+<li>mkdir 创建目录(在当前目录下创建目录)</li>
+<li>touch  创建一个新的文件</li>
+<li>文件中写内容的方式（echo 内容 &gt; 文件名称）（echo 内容 &gt;&gt; 文件名称）[追加]</li>
+<li>cat 查看文件的内容  cat +文件名称</li>
+<li>less 查看文件内容  less+ 文件名（全屏显示）q退出</li>
+<li>tail 查看文件的结尾内容  tail -n + 数字+文件名(-n 后面的数字表示结尾的几行)   tail -f  abc.txt (监控文件中的内容的实时变化)</li>
+<li>rm  删除文件  rm 文件名称（不能删除目录）</li>
+<li>rmdir 删除空文件夹  rmdir + 文件夹</li>
+<li>rm -rf  删除目录（空的，有内容的都删除）</li>
+<li>mv  移动文件 </li>
+<li>cp 复制文件<h2 id="vi-编辑器"><a href="#vi-编辑器" class="headerlink" title="vi 编辑器"></a>vi 编辑器</h2></li>
+<li>三种模式：插入模式，底行模式，命令行模式（vi + 文件名【如果文件不存在，会创建一个新的文件】）<ul>
+<li>i，a从命令模式进入输入模式，从命令行直接保存退出shift+zz  ； ctrl+f（b） 翻页; /+内容 （查找内容）；快速到文件开始处 gg ;  </li>
+<li>esc 退出输入模式</li>
+<li>shift+： 进入末行模式，:wq +enter  退出vi编辑器   :set nu 可以显示出行号，但是不能保存到文件中，: e! 回到上一次保存的状态  :w + 新的文件名 （另存为）；shift+: +0 快速到首行，； shift:+$ 快速到末行<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2></li>
+</ul>
+</li>
+<li><p>SSH 是一种网络协议，用于计算机之间的加密登录(具体就是实现远程登录)</p>
+</li>
+<li><p>登录方式</p>
+<ul>
+<li>使用密码登录<ol>
+<li>首先客户端向服务器发送一个请求</li>
+<li>服务器接收到请求之后向客户端发送自己的公钥</li>
+<li>客户端接收到公钥后存储到指定目录</li>
+<li>客户端输入密码然后用公钥加密，再次发送请求</li>
+<li>服务器接收到密文后，使用自己的私钥解密然后验证通过，从而允许客户端登陆</li>
+</ol>
+</li>
+<li>使用公钥和私钥登录（与密码没有关系）<ol>
+<li>客户端先生成自己的公钥和私钥</li>
+<li>把客户端的公钥传递给服务器，服务器使用该公钥给客户端授权</li>
+<li>客户端直接可以免密码登录</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>加密方式<br><em>　对称加密
+</em>　非对称加密（公钥加密，私钥解密，私钥加密，公钥解密）</p>
+</li>
+<li><p>SSH 通信过程：</p>
+<ol>
+<li>客户端发送请求</li>
+<li>服务器接收到请求之后，将服务器的公钥发送给客户端</li>
+<li>客户端收到公钥后会存储到某个位置（c:\Users\用户名.ssh）</li>
+<li>客户端再次发送登录请求（密码会使用公钥加密）</li>
+<li>服务器接收到密文后，使用私钥进行解密，然后验证是否正确<h2 id="git-1"><a href="#git-1" class="headerlink" title="git"></a>git</h2></li>
+</ol>
+</li>
+<li>git中的三个重要区域<ol>
+<li>工作目录</li>
+<li>暂存区</li>
+<li>本地仓库</li>
+</ol>
+</li>
+<li>git中文件的四种状态<ol>
+<li>未跟踪  untracked  — 工作目录刚创建的文件</li>
+<li>已暂存 staged  —- 从工作目录提交到暂存区的文件</li>
+<li>已提交 commited —– 从暂存区提交到本地仓库的文件</li>
+<li>已修改 modified  —— 暂存区修改过的文件</li>
+</ol>
+</li>
+<li>常用命令基本使用（本地）<ol>
+<li>建立一个放置的区域  </li>
+<li>git init  初始化仓库</li>
+<li>git config –global user.name 名字</li>
+<li>git config –global user.email 邮箱</li>
+<li>git add 文件列表    将文件（未跟踪到文件）提交到暂存区（多个文件之间用空格隔开）  git status 可以查看文件的状态  git -A 表示全部提交（git add * ）</li>
+<li>git rm – cached 文件列表     重新把暂存区中的文件放回工作目录</li>
+<li>git commit -m ‘ 描述信息’  —- 将暂存区的文件提交到本地仓库</li>
+<li>git log 查看历史记录 </li>
+<li>git checkout –files 取消暂存区文件的修改内容</li>
+<li>git reset HEAD  使用本地仓库的最新版本覆盖暂存区，但是不覆盖工作目录，也就是取消了add，不把内容放回到工作目录</li>
+<li>git reset –hard + 要回到版本的提交id(哈希文) <commitid>用本地仓库中的快照覆盖工作目录和暂存区的内容，并且放弃commitID之后的提交 <h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2></commitid></li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>从主版本拷贝若干份，修改，而不污染原来的。</li>
+</ul>
+<ol>
+<li>创建分支  git branch 分支名称  （git branch 查看分支）</li>
+<li>删除分支  git branch -d 分支名称</li>
+<li>切换分支  git checkout 分支名称</li>
+</ol>
+<ul>
+<li>git checkout -b 分支名称   (创建并切换分支，相当于git branch 和 git checkout 合并)</li>
+</ul>
+<ol>
+<li>合并分支  git merge 分支名称（来源分支）</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/02/git流程/" rel="prev" title="js基础">
+                js基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yxy" />
+          <p class="site-author-name" itemprop="name">Yxy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git"><span class="nav-number">1.</span> <span class="nav-text">git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作计算机的几种方式"><span class="nav-number">1.1.</span> <span class="nav-text">操作计算机的几种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bath-命令"><span class="nav-number">1.2.</span> <span class="nav-text">bath 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi-编辑器"><span class="nav-number">1.3.</span> <span class="nav-text">vi 编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">1.4.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-1"><span class="nav-number">1.5.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">1.6.</span> <span class="nav-text">分支</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yxy</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

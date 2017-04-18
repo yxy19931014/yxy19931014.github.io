@@ -1,0 +1,707 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="js高级第七天extend用法
+$.extend(true,obj,obj1);
+第一个为true，是深拷贝；为false，是浅拷贝##基本类型和引用类型1234567891011&amp;lt;script&amp;gt;var a=&amp;#123;  n:1&amp;#125;var b=a;a.x=a=&amp;#123;  n:2&amp;#125;;//.的优先级最高,赋值从右向左（a.x首先是undefined，然后改变了a的指">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js面向对象小分享4">
+<meta property="og:url" content="http://yoursite.com/2015/08/26/js高级4/index.html">
+<meta property="og:site_name" content="Miss yang">
+<meta property="og:description" content="js高级第七天extend用法
+$.extend(true,obj,obj1);
+第一个为true，是深拷贝；为false，是浅拷贝##基本类型和引用类型1234567891011&amp;lt;script&amp;gt;var a=&amp;#123;  n:1&amp;#125;var b=a;a.x=a=&amp;#123;  n:2&amp;#125;;//.的优先级最高,赋值从右向左（a.x首先是undefined，然后改变了a的指">
+<meta property="og:updated_time" content="2017-04-12T02:33:20.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js面向对象小分享4">
+<meta name="twitter:description" content="js高级第七天extend用法
+$.extend(true,obj,obj1);
+第一个为true，是深拷贝；为false，是浅拷贝##基本类型和引用类型1234567891011&amp;lt;script&amp;gt;var a=&amp;#123;  n:1&amp;#125;var b=a;a.x=a=&amp;#123;  n:2&amp;#125;;//.的优先级最高,赋值从右向左（a.x首先是undefined，然后改变了a的指">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/26/js高级4/"/>
+
+
+
+
+
+  <title> js面向对象小分享4 | Miss yang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Miss yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/26/js高级4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Miss yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js面向对象小分享4
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-26T13:39:04+08:00">
+                2015-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="js高级第七天"><a href="#js高级第七天" class="headerlink" title="js高级第七天"></a>js高级第七天</h1><h2 id="extend用法"><a href="#extend用法" class="headerlink" title="extend用法"></a>extend用法</h2><ol>
+<li>$.extend(true,obj,obj1);</li>
+<li>第一个为true，是深拷贝；为false，是浅拷贝<br>##基本类型和引用类型<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> a=&#123;</div><div class="line">  <span class="attr">n</span>:<span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b=a;</div><div class="line">a.x=a=&#123;</div><div class="line">  <span class="attr">n</span>:<span class="number">2</span></div><div class="line">&#125;;<span class="comment">//.的优先级最高,赋值从右向左（a.x首先是undefined，然后改变了a的指向，再把a赋值给值为undefined的a.x）</span></div><div class="line"><span class="built_in">console</span>.log(a.x);</div><div class="line"><span class="built_in">console</span>.log(b.x);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="正则表达式-regular-expression"><a href="#正则表达式-regular-expression" class="headerlink" title="正则表达式 regular expression"></a>正则表达式 regular expression</h2><ol>
+<li>正则的规则<ol>
+<li>元字符：描述字符的字符<ul>
+<li>. 单个字符（除了换行和结束符）</li>
+<li>\w  单词字符</li>
+<li>\s   空白符</li>
+<li>[^abc]  不包括a,b,c</li>
+<li>转义： [ ]中的不需要转义</li>
+<li>如果正则直接写特定字符，就直接匹配特定字符</li>
+<li>量词： +、* 、？(0或1次)  { n,m},{n} {n,} </li>
+</ul>
+</li>
+<li>元数据：描述数据的数据</li>
+</ol>
+</li>
+<li>相关的API<ol>
+<li>正则的API<ul>
+<li>test()</li>
+<li>exec()</li>
+</ul>
+</li>
+<li>字符串API<ul>
+<li>search</li>
+<li>match</li>
+<li>split</li>
+<li>replace</li>
+</ul>
+</li>
+<li>str的match方法，在非全局匹配模式下，str.match(reg) 和 reg.exe(str)的作用等效。</li>
+<li>reg的exec(),可以循环遍历<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> str = <span class="string">'adsfasdf123asdfasdf21312sfdsadfad'</span>;</div><div class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span>;</div><div class="line">    <span class="comment">// var ret = reg.exec(str);</span></div><div class="line">    <span class="comment">// console.log(ret);</span></div><div class="line">    <span class="keyword">var</span> result = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">while</span>((result = reg.exec(str)) != <span class="literal">null</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Matched `"</span> + result[<span class="number">0</span>] +</div><div class="line">              <span class="string">"' at position "</span> + result.index +</div><div class="line">              <span class="string">" next search begins at position "</span> + reg.lastIndex);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//\b的用法</span></div><div class="line">    <span class="keyword">var</span> str=<span class="string">"As a programmer,it is happy"</span>;</div><div class="line">    <span class="keyword">var</span> reg=<span class="regexp">/\b\w+\b/g</span>;</div><div class="line">    <span class="built_in">console</span>.log(str.match(reg));</div><div class="line">    <span class="comment">//转义</span></div><div class="line">    <span class="keyword">var</span> reg=<span class="regexp">/[$]/</span>;<span class="comment">//在[]中的不需要转义</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="事件的相关案例"><a href="#事件的相关案例" class="headerlink" title="事件的相关案例"></a>事件的相关案例</h2><ol>
+<li>oncontextmenu 事件，右键菜单事件  （先阻止浏览器默认事件，加自己的右键菜单）<h2 id="typeof-运算符"><a href="#typeof-运算符" class="headerlink" title="typeof 运算符"></a>typeof 运算符</h2>toString():把构造函数转成[object Object]形式的字符串</li>
+<li>var ret=Object.prototype.toString.call({});//[object Object]</li>
+<li>var ret=Object.prototype.toString.call([]);//[object Array]</li>
+<li>var rer= Object.prototype.toString.calll(/\d/);//[object RegExp]</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/26/js高级2/" rel="next" title="js面向对象小分享3">
+                <i class="fa fa-chevron-left"></i> js面向对象小分享3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/26/js高级3/" rel="prev" title="js面向对象分享3">
+                js面向对象分享3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yxy" />
+          <p class="site-author-name" itemprop="name">Yxy</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#js高级第七天"><span class="nav-number">1.</span> <span class="nav-text">js高级第七天</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extend用法"><span class="nav-number">1.1.</span> <span class="nav-text">extend用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式-regular-expression"><span class="nav-number">1.2.</span> <span class="nav-text">正则表达式 regular expression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件的相关案例"><span class="nav-number">1.3.</span> <span class="nav-text">事件的相关案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof-运算符"><span class="nav-number">1.4.</span> <span class="nav-text">typeof 运算符</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yxy</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
